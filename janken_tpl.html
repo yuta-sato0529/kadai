@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title>じゃんけん</title>
+</head>
+<body>
+
+<header>
+  <h1>じゃんけん</h1>
+  
+</header>
+
+<main>
+  <ul>
+    <li id="gu_btn">グー</li>
+    <li id="cho_btn">チョキ</li>
+    <li id="par_btn">パー</li>
+  </ul>
+  <div>コンピュータの出した手は？「<span id="pc_hands">なに？</span>」</div>
+  <div id="judgment">勝ち</div>
+</main>
+
+<footer></footer>
+<script>
+//じゃんけん用のSCRIPTを書いてください
+
+//各IDを指定する
+const gu_btn =document.querySelector("#gu_btn")
+const cho_btn =document.querySelector("#cho_btn")
+const par_btn =document.querySelector("#par_btn")
+const pc_hands =document.querySelector("#pc_hands")
+const judgment =document.querySelector("#judgment")
+
+// フォントサイズの変更 赤色に
+// gu_btn.style.color="#ff0000";
+
+// 関数の定義
+function janken(r){
+    //コンピューターのじゃんけん選択
+    let jresult = "";
+    if(r==1){
+      jresult = "コンピュータ：グー";
+    }else if(r==2){
+      jresult = "コンピュータ：チョキ";
+    }else{
+      jresult = "コンピュータ：パー";
+    }
+    // 文字列変更
+    $("#pc_hands").html(jresult);
+    // 勝ちの箇所をまけ、勝ち、引き分けを表示
+    
+  }
+  
+
+  // じゃんけん選択
+  gu_btn.onclick = function( ){
+    /*console.log(e.pageX);
+    こちらでコンソールを指定することで動作をコンソールに入れられる
+    */  
+    let r = Math.ceil(Math.random()*3); 
+    janken(r);
+     // 勝ちの箇所をまけ、勝ち、引き分けを表示
+    let result = "";
+    if(r==1){
+      result = "あなたの引き分け";
+    }else if(r==2){
+      result = "あなたの勝ち";
+    }else{
+      result = "あなたの負け";
+    }
+     $("#judgment").html(result);
+  }
+
+  cho_btn.onclick = function( ){
+    let r = Math.ceil(Math.random()*3); 
+    janken(r);
+     // 勝ちの箇所をまけ、勝ち、引き分けを表示
+    let result = "";
+    if(r==1){
+      result = "あなたの負け";
+    }else if(r==2){
+      result = "あなたの引き分け";
+    }else{
+      result = "あなたの勝ち";
+    }
+     $("#judgment").html(result);
+  }
+
+  par_btn.onclick = function(){
+    let r = Math.ceil(Math.random()*3); 
+    janken(r);
+     // 勝ちの箇所をまけ、勝ち、引き分けを表示
+    let result = "";
+    if(r==1){
+      result = "あなたの勝ち";
+    }else if(r==2){
+      result = "あなたの負け";
+    }else{
+      result = "あなたの引き分け";
+    }
+     $("#judgment").html(result);
+  }
+  
+
+</script>
+</body>
+</html>
